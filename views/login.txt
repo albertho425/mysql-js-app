@@ -1,0 +1,3 @@
+username: chicken
+email:  kfchicken@kfc.com
+password: kfcchicken2022

@@ -1,0 +1,30 @@
+{
+  "name": "complex-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon db --ignore frontend-js --ignore public/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
+    "csurf": "^1.11.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-mysql-session": "^2.1.8",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "marked": "^4.0.15",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.16",
+    "sanitize-html": "^2.7.0",
+    "socket.io": "^4.5.0",
+    "validator": "^13.7.0"
+  }
+}
