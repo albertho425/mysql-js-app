@@ -1,0 +1,7 @@
+username: chicken
+email:  kfchicken@kfc.com
+password: kfcchicken2022
+
+username: sushi
+email: sushi@sushi.com
+password: sushi20222022
