@@ -120,7 +120,7 @@ Post.findSingleById = function (id, visitorId = 0) {
     You'll need: id
     ===============================================*/
     let [[post]] = await db.execute("SELECT p.title, p.body, p._id, p.author, p.createdDate, u.username, u.avatar FROM posts p JOIN users u ON p.author = u._id WHERE p._id = ?", [id])
-    
+
     if (post) {
       post.isVisitorOwner = post.author == visitorId
       resolve(post)
@@ -135,7 +135,7 @@ Post.findByAuthorId = async function (authorId) {
   Task #4 FIND ALL POSTS BY AUTHOR ID
   You'll need: authorId
   ===============================================*/
-  let [posts] = await db.execute()
+  let [posts] = await db.execute("SELECT p.title, p.body, p._id, p.author, p.createdDate, u.username, u.avatar FROM posts p JOIN users u ON p.author = u._id WHERE p.author = ? ORDER BY createdDate DESC", [authorId])
   return posts
 }
 
@@ -145,7 +145,8 @@ Post.countPostsByAuthor = function (id) {
     Task #5 COUNT HOW MANY POSTS A USER HAS CREATED
     You'll need: id
     ===============================================*/
-    const [[{ posts }]] = await db.execute()
+    const [[{ posts }]] = await db.execute("SELECT count(_id) as posts FROM posts WHERE author = ?", [id])
+    
     resolve(posts)
   })
 }
@@ -159,7 +160,7 @@ Post.delete = function (postIdToDelete, currentUserId) {
         Task #6 DELETE ONE POST BY ID,
         You'll need: postIdToDelete
         ===============================================*/
-        await db.execute()
+        await db.execute("DELETE FROM POSTS WHERE _id = ?",[postIdToDelete])
         resolve()
       } else {
         reject()
