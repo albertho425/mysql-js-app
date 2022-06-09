@@ -65,7 +65,7 @@ Post.prototype.create = function () {
       Task #1 CREATE A POST
       You'll need: incoming.title, incoming.body, incoming.author, and incoming.createdDate
       ===============================================*/
-      const [{ insertId }] = await db.execute()
+      const [{ insertId }] = await db.execute("INSERT INTO ournodeapp.posts (title,body,author,createdDate) VALUES (?,?,?,?)",[incoming.title,incoming.body,incoming.author, incoming.createdDate])
       resolve(insertId)
     } else {
       reject(this.errors)
@@ -104,7 +104,8 @@ Post.prototype.actuallyUpdate = function () {
       Task #2 UPDATE AN EXISTING POST
       You'll need: incoming.title, incoming.body, incoming.requestedPostId
       ===============================================*/
-      await db.execute()
+      await db.execute("UPDATE posts SET title = ?, body = ? WHERE _id = ?", [incoming.title, incoming.body, incoming.requestedPostId])
+
       resolve("success")
     } else {
       resolve("failure")
@@ -118,8 +119,8 @@ Post.findSingleById = function (id, visitorId = 0) {
     Task #3 FIND ONE POST BY ID
     You'll need: id
     ===============================================*/
-    let [[post]] = await db.execute()
-
+    let [[post]] = await db.execute("SELECT p.title, p.body, p._id, p.author, p.createdDate, u.username, u.avatar FROM posts p JOIN users u ON p.author = u._id WHERE p._id = ?", [id])
+    
     if (post) {
       post.isVisitorOwner = post.author == visitorId
       resolve(post)
