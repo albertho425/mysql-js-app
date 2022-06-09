@@ -177,8 +177,9 @@ Post.search = function (searchTerm) {
       /*===============================================
       Task #7 SEARCH FOR POSTS BY KEYWORD OR PHRASE
       You'll need: searchTerm
+      MYSQL query is: SELECT * FROM posts WHERE MATCH(title,body) AGAINST('sushi')
       ===============================================*/
-      let [posts] = await db.execute()
+      let [posts] = await db.execute("SELECT p.title, p.body, p._id, p.author, p.createdDate, u.username, u.avatar FROM posts p JOIN users u ON p.author = u._id WHERE MATCH(title,body) AGAINST(?)", [searchTerm])
       resolve(posts)
     } else {
       reject()
