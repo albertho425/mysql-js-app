@@ -18,7 +18,7 @@ Follow.prototype.validate = async function (action) {
   Task #1 SEE IF USERNAME EXISTS
   You'll need: this.followedUsername
   ===============================================*/
-  const [followedAccount] = await db.execute()
+  const [followedAccount] = await db.execute("SELECT * FROM users WHERE username = ?",[this.followedUsername])
   if (followedAccount.length) {
     this.followedId = followedAccount[0]._id
   } else {
@@ -29,7 +29,7 @@ Follow.prototype.validate = async function (action) {
   Task #2 SEE IF THIS USER IS ALREADY FOLLOWING THIS USER
   You'll need: this.followedId, this.authorId
   ===============================================*/
-  const [doesFollowAlreadyExist] = await db.execute()
+  const [doesFollowAlreadyExist] = await db.execute("SELECT * from follows WHERE followedId = ? AND authorId = ?",[this.followedId, this.authorId])
   if (action == "create") {
     if (doesFollowAlreadyExist.length) {
       this.errors.push("You are already following this user.")
@@ -56,7 +56,7 @@ Follow.prototype.create = function () {
       Task #3 ADD A FOLLOW INTO THE FOLLOWS TABLE
       You'll need: this.followedId, this.authorId
       ===============================================*/
-      await db.execute()
+      await db.execute("INSERT INTO follows (followedId, authorId) VALUES (?,?)",[this.followedId, this.authorId])
       resolve()
     } else {
       reject(this.errors)
@@ -73,7 +73,7 @@ Follow.prototype.delete = function () {
       Task #4 DELETE A FOLLOW FROM THE FOLLOWS TABLE
       You'll need: this.followedId, this.authorId
       ===============================================*/
-      await db.execute()
+      await db.execute("DELETE FROM follows WHERE followedId = ? AND authorId = ?",[this.followedId, this.authorId])
       resolve()
     } else {
       reject(this.errors)
@@ -86,8 +86,8 @@ Follow.isVisitorFollowing = async function (followedId, visitorId) {
   Task #5 IS THE LOGGED IN USER FOLLOWING THIS USER?
   You'll need: followedId, visitorId
   ===============================================*/
-  //const [follows] = await db.execute()
-  return false
+  const [follows] = await db.execute("SELECT * from follows WHERE followedId = ? AND authorId = ?",[followedId,visitorId])
+  // return false
   if (follows.length) {
     return true
   } else {
@@ -102,7 +102,7 @@ Follow.getFollowersById = function (id) {
       Task #6 GET THE USERS WHO FOLLOW THIS USER
       You'll need: id
       ===============================================*/
-      let [followers] = await db.execute()
+      let [followers] = await db.execute("SELECT username, avatar FROM follows JOIN USERS ON users._id = follows.authorId WHERE followedId = ?",[id])
       resolve(followers)
     } catch {
       reject()
@@ -117,7 +117,7 @@ Follow.getFollowingById = function (id) {
       Task #7 GET THE USERS THAT THIS USER FOLLOWS
       You'll need: id
       ===============================================*/
-      let [followers] = await db.execute()
+      let [followers] = await db.execute("SELECT username, avatar FROM follows JOIN USERS ON follows.followedId = used._id WHERE authorId = ?",b)
       resolve(followers)
     } catch {
       reject()
@@ -131,9 +131,9 @@ Follow.countFollowersById = function (id) {
     Task #8 COUNT HOW MANY PEOPLE FOLLOW THIS USER
     You'll need: id
     ===============================================*/
-    //const [[{ followers }]] = await db.execute()
-    //resolve(followers)
-    resolve(0)
+    const [[{ followers }]] = await db.execute("SELECT COUNT(followedId) as followers FROM follows WHERE followedId = ?",[id])
+    resolve(followers)
+    
   })
 }
 
@@ -143,9 +143,9 @@ Follow.countFollowingById = function (id) {
     Task #9 COUNT HOW MANY PEOPLE THIS USER FOLLOWS
     You'll need: id
     ===============================================*/
-    //const [[{ following }]] = await db.execute()
-    //resolve(following)
-    resolve(0)
+    const [[{ following }]] = await db.execute("SELECT count(followedId) as following FROM follows where authorId = ?",[id])
+    resolve(following)
+    //resolve(0)
   })
 }
 
