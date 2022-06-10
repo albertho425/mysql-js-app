@@ -1,0 +1,36 @@
+username: chicken
+email:  kfchicken@kfc.com
+password: kfcchicken2022
+
+username: sushi
+email: sushi@sushi.com
+password: sushi20222022
+
+username: burger
+email: burger@burger.com
+password: burger20222022
+
+username: pizza
+email: pizza@pizza.com
+password: pizza20222022
+
+Follows Table
+-------------
+
+authorId      | followedId
+------------- | -------------
+1             | 2
+2             | 1
+3             | 1
+4             | 2
+
+Users Table
+-----------
+
+_id           | username
+--------------| --------------
+1             | chicken
+2             | sushi
+3             | burger
+4             | pizza
+
