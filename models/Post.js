@@ -192,10 +192,12 @@ Post.getFeed = async function (id) {
   Task #8 GET POSTS FROM USERS YOU FOLLOW
   You'll need: id
   ===============================================*/
-  //let [posts] = await db.execute()
+  let [posts] = await db.execute("SELECT posts._id, title, createdDate, username, avatar FROM posts JOIN users ON posts.author = users._id WHERE author IN (SELECT followedId FROM follows where authorID = ?) ORDER BY createdDate DESC",[id])
+
 
   // Return 'posts' instead of [] once you've actually written your query.
-  return []
+  return posts
 }
+
 
 module.exports = Post
