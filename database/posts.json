@@ -1,0 +1,6 @@
+[{"_id":2, "title":"Hello World", "body":"Hello again", "author":1, "createdDate":"2022-06-07 20:20:25"},
+ {"_id":3, "title":"Hi", "body":"Want to eat sushi?", "author":1, "createdDate":"2022-06-08 20:20:41"},
+ {"_id":4, "title":"Another post", "body":"Let's eat sushi and fried chicken and pizza", "author":1, "createdDate":"2022-06-08 20:22:52"},
+ {"_id":6, "title":"Sushi", "body":"Saba, Nigiri, tempura and kimchi!", "author":1, "createdDate":"2022-06-08 20:39:04"},
+ {"_id":8, "title":"Want burger", "body":"Let's have A&amp;W teen burger and fries and root beer", "author":2, "createdDate":"2022-06-10 12:08:43"},
+ {"_id":9, "title":"Wanna eat pizza", "body":"Yes, Hawaiian, meat lovers, cheese burger, and veggie pizza please", "author":4, "createdDate":"2022-06-11 22:39:51"}]

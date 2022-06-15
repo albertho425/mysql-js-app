@@ -1,0 +1,4 @@
+[{"_id":1, "username":"chicken", "email":"kfchicken@kfc.com", "password":"$2a$10$fPt7mON.9ZbsTCPUjOEBru4asvFn0FTQ.qTXHQ3j959JkjHRTqmye", "avatar":"https://gravatar.com/avatar/5eb688e06698f772f52321d3378f7dc2?s=128"},
+ {"_id":2, "username":"sushi", "email":"sushi@sushi.com", "password":"$2a$10$d.sxPd5pOn2QDe6dcR/5hOJbgbt8zgkAs.E1sMZRl0LOnCsImGqLe", "avatar":"https://gravatar.com/avatar/526253ab1cb9eb2b6668497c6b466d7c?s=128"},
+ {"_id":3, "username":"burger", "email":"burger@burger.com", "password":"$2a$10$BecJl14bZNF/Gmy5/1tqCeuVFJr9rd/FygLDiBvBZ8vMJIOAxZzyS", "avatar":"https://gravatar.com/avatar/8d1713a8bec41d22a2f79d73730e46cf?s=128"},
+ {"_id":4, "username":"pizza", "email":"pizza@pizaa.com", "password":"$2a$10$Jmk.JMq121mD34OpMtx6lObQ3I.UGfaSMAc3Ucd1.mpIgC3.KZdBq", "avatar":"https://gravatar.com/avatar/8851487387dc9bb6f6530a170267b97f?s=128"}]

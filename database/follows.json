@@ -1,0 +1,6 @@
+[{"followedId":2, "authorId":1},
+ {"followedId":1, "authorId":2},
+ {"followedId":1, "authorId":3},
+ {"followedId":1, "authorId":4},
+ {"followedId":2, "authorId":4},
+ {"followedId":3, "authorId":4}]
