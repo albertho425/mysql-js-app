@@ -27,5 +27,30 @@ function shapeDatabase(db) {
   avatar varchar(100) GENERATED ALWAYS AS (concat(_utf8mb4'https://gravatar.com/avatar/',md5(email),_utf8mb4'?s=128')) VIRTUAL,
   PRIMARY KEY (_id)
 );
+CREATE TABLE IF NOT EXISTS posts (
+  _id int NOT NULL AUTO_INCREMENT,
+  title mediumtext NOT NULL,
+  body longtext NOT NULL,
+  author int NOT NULL,
+  createdDate datetime NOT NULL,
+  PRIMARY KEY (_id),
+  KEY authorfk_idx (author),
+  FULLTEXT KEY titlebodysearch (title,body),
+  CONSTRAINT authorfk FOREIGN KEY (author) REFERENCES users (_id)
+);
+CREATE TABLE sessions (
+  session_id varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  expires int unsigned NOT NULL,
+  data mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  PRIMARY KEY (session_id)
+);
+CREATE TABLE follows (
+  followedId int NOT NULL,
+  authorId int NOT NULL,
+  PRIMARY KEY (followedId,authorId),
+  KEY authorid_idx (authorId),
+  CONSTRAINT authorid FOREIGN KEY (authorId) REFERENCES users (_id),
+  CONSTRAINT followedfk FOREIGN KEY (followedId) REFERENCES users (_id)
+);
 `)
 }
