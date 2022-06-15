@@ -1,0 +1,5 @@
+"_id";"username";"email";"password";"avatar"
+1;"chicken";"kfchicken@kfc.com";"$2a$10$fPt7mON.9ZbsTCPUjOEBru4asvFn0FTQ.qTXHQ3j959JkjHRTqmye";"https://gravatar.com/avatar/5eb688e06698f772f52321d3378f7dc2?s=128"
+2;"sushi";"sushi@sushi.com";"$2a$10$d.sxPd5pOn2QDe6dcR/5hOJbgbt8zgkAs.E1sMZRl0LOnCsImGqLe";"https://gravatar.com/avatar/526253ab1cb9eb2b6668497c6b466d7c?s=128"
+3;"burger";"burger@burger.com";"$2a$10$BecJl14bZNF/Gmy5/1tqCeuVFJr9rd/FygLDiBvBZ8vMJIOAxZzyS";"https://gravatar.com/avatar/8d1713a8bec41d22a2f79d73730e46cf?s=128"
+4;"pizza";"pizza@pizaa.com";"$2a$10$Jmk.JMq121mD34OpMtx6lObQ3I.UGfaSMAc3Ucd1.mpIgC3.KZdBq";"https://gravatar.com/avatar/8851487387dc9bb6f6530a170267b97f?s=128"
