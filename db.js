@@ -38,18 +38,12 @@ CREATE TABLE IF NOT EXISTS posts (
   FULLTEXT KEY titlebodysearch (title,body),
   CONSTRAINT authorfk FOREIGN KEY (author) REFERENCES users (_id)
 );
-CREATE TABLE sessions (
-  session_id varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  expires int unsigned NOT NULL,
-  data mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
-  PRIMARY KEY (session_id)
-);
-CREATE TABLE follows (
+CREATE TABLE IF NOT EXISTS follows (
   followedId int NOT NULL,
   authorId int NOT NULL,
   PRIMARY KEY (followedId,authorId),
-  KEY authorid_idx (authorId),
-  CONSTRAINT authorid FOREIGN KEY (authorId) REFERENCES users (_id),
+  KEY authorId_idx (authorId),
+  CONSTRAINT authorId FOREIGN KEY (authorId) REFERENCES users (_id),
   CONSTRAINT followedfk FOREIGN KEY (followedId) REFERENCES users (_id)
 );
 `)
