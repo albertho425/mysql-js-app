@@ -1,10 +1,34 @@
+:root {
+  --purple: #7d3659;
+  --purple2: rgb(88, 86, 214);
+  --navy: rgba(115,150,186,.2);
+  --beige: #f8f4f2;
+  --black: #000;
+  --navyblue: #011936;
+}
+
+
 body, .tooltip
  {
   font-family: 'Open Sans', sans-serif;
+  color: var(--purple2);
+}
+
+.btn-primary {
+  background-color: var(--purple);
+}
+
+.btn-success {
+  background-color: var(--purple);
+}
+
+.btn-success:hover {
+  background-color: var(--purple2);
 }
 
 .header-bar {
-  background-color: #292929;
+  background-color: var(--navyblue);
+
 }
 
 .container--narrow {
